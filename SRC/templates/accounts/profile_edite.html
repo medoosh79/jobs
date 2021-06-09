@@ -1,0 +1,25 @@
+{% extends 'base2.html' %}
+{% load static %}
+{% load bootstrap4 %}
+
+
+{% block content %}
+
+	<div class="my-form container pt-80 pb-80  "> 
+        <div class="section-title  ">
+			<h2 class="font-weight-bold mt-3">Edite Profile</h2>
+			<hr>
+            <div class="section-title  " style="text-align:left;">
+                <form method="POST"  id="personForm" data-cities-url="{% url 'ajax_load_cities' %}" enctype="multipart/form-data" style="text-align:left; color:rgb(13, 13, 77);">
+                    {% csrf_token %}
+                    {% bootstrap_form userform %}
+                    {% bootstrap_form profileform %}
+                                                            
+                    <button class="btn btn-primary " type="submit">Save Edite</button>
+                </form>
+  	        </div> 
+        </div> 
+  	</div> 
+    
+    
+{% endblock content %}

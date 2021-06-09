@@ -1,0 +1,41 @@
+{% extends "base1.html" %}
+{% load bootstrap4 %}
+
+{% block content %}
+
+
+  <div id = "signinform" class="my-form container  pt-120 pb-120 col-md-3" >
+  <h2 class="text-center">SignIn</h2>
+  <hr>
+  {% if form.errors %}
+    <p style= "color:red;">Your username or password didn't match. <strong> Please try again.</strong></p>
+  {% endif %}
+
+  {% if next %}
+    {% if user.is_authenticated %}
+      <p>Your account doesn't have access to this page. To proceed,
+      please login with an account that has access.</p>
+    {% else %}
+      <p>Please login to see this page.</p>
+    {% endif %}
+  {% endif %}
+
+  <form method="post" action= "{% url 'login' %}" >
+    {% csrf_token %}
+ 
+    {% bootstrap_form formsignin %}
+    <div class="pt-20">
+      <input type="submit" class="btn head-btn1  container pt-20 pb-20" value="login" />
+      
+    </div>
+    <hr>
+    <div class="alert-link mb-3 mt-3">
+     <h5 clas="alert-link"> If you forget your password <a href="{% url 'password_reset' %}" style="color:blue" ><strong>  Reset Password</strong> </a></h5>
+     <hr>
+     <h5 clas="alert-link"> If you don't have account <a href="{% url 'signup' %}" style="color:blue" ><strong>  SignUP</strong> </a></h5>
+      
+    </div>
+  </form>
+  </div>
+
+{% endblock %}

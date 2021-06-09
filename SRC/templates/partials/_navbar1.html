@@ -1,0 +1,92 @@
+  {% load static %}
+  
+
+
+
+<!-- Preloader Start -->
+    <div id="preloader-active">
+        <div class="preloader d-flex align-items-center justify-content-center">
+            <div class="preloader-inner position-relative">
+                <div class="preloader-circle"></div>
+                <div class="preloader-img pere-text">
+                    <img src="{% static 'assets/img/logo/logo.png' %}" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- Preloader Start -->
+    <header>
+        <!-- Header Start -->
+       <div class="header-area header-transparrent">
+           <div class="headder-top header-sticky">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-3 col-md-2">
+                            <!-- Logo -->
+                            <div class="logo">
+                                <a href="/"><img src="{% static 'assets/img/logo/logo.png' %}" alt=""></a>
+                            </div>  
+                        </div>
+                        <div class="col-lg-9 col-md-9">
+                            <div class="menu-wrapper">
+                                <!-- Main-menu -->
+                                <div class="main-menu">
+                                    <nav class="d-none d-lg-block">
+                                        <ul id="navigation">
+                                            <li><a href="/">Home</a></li>
+                                            <li><a href="#">Find a Jobs </a></li>
+                                            <li><a href="{%  url 'about' %}">About</a></li>
+                                            <li><a href="#">Page</a>
+                                                <ul class="submenu">
+                                                    <li><a href="blog.html">Blog</a></li>
+                                                    <li><a href="single-blog.html">Blog Details</a></li>
+                                                    <li><a href="elements.html">Elements</a></li>
+                                                    <li><a href="job_details.html">job Details</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="#">Contact</a></li>
+                                        </ul>
+                                    </nav>
+                                </div>          
+                                
+
+
+
+                                {% if request.user.is_authenticated %}
+                                    <a href="#" class="btn head-btn1">Post A Job</a>
+
+                                    <button type="button" class="btn head-btn1 dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        {{request.user.username}}                                        
+                                        <img src="{{profile_pic.url}}" class="img-brand" alt="" style="height: 35px;">
+                                    </button>
+                                        <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="{% url 'profile' %}">My Profile</a>
+                                        <a class="dropdown-item" href="">My Order</a>
+                                        <a class="dropdown-item" href="">My Favorite</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="{% url 'logout'  %}">Log Out</a>
+                                        </div>                                
+                                {% else %}
+                                    <div class="header-btn d-none f-right d-lg-block">
+                                                                          
+                                        <a href="{% url 'signin' %}" class="btn head-btn2">LogIn</a>
+                                        <a href="{% url 'signup' %}" class="btn head-btn2">LogUp</a>
+                                        
+                                    </div>
+
+                                {% endif %}                                
+                                
+                            </div>
+                                              
+                                                            
+                        </div>
+                        <!-- Mobile Menu -->
+                        <div class="col-12">
+                            <div class="mobile_menu d-block d-lg-none"></div>
+                        </div>
+                    </div>
+                </div>
+           </div>
+       </div>
+        <!-- Header End -->
+    </header>

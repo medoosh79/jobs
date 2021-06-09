@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+
+
+{% block content %}
+<main>
+
+        <!-- Hero Area Start-->
+        <div class="slider-area ">
+        <div class="single-slider section-overly slider-height2 d-flex align-items-center" data-background="{% static 'assets/img/hero/about.jpg' %}">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="hero-cap text-center">
+                            <h2>Add new Experience</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <!-- Hero Area End -->
+        
+      
+        <div class="section-top-border container ">
+				<div class="row container">
+					<div class="col-lg-10 col-md-10 ">                            
+                            <h4 class="mb-30">Add new job</h4>                            
+                            <form action="#" method="post" enctype= "multipart/form-data" >
+                                {% csrf_token %}
+                                {% bootstrap_form experienceform %}
+                                {% buttons %}
+                                    <button type="submit" class="btn w-100">Add new Experience</button>
+                                {% endbuttons %}
+                            </form>
+                    </div>
+                </div>
+        </div>
+
+    </main>
+    
+
+{% endblock content %}

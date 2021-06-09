@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+
+
+{% block content %}
+	  
+	<div class="section-top-border container ">
+		<div class="row">
+			<form method='post'>
+				{% csrf_token %}
+				{% if request.user.is_authenticated %} 
+					<div class="col-4" >
+						{% if user.profile.profile_pic %}
+						<img src="{{profile.profile_pic.url}}" class="img-fluid rounded-circle" alt="" style="max-width: 80%;">
+						{% endif %}
+					</div>
+					<div class="col-lg-8 col-md-8 pt-50 pb-120 ">
+						<h3 class="mb-30">Profile</h3>
+						
+							<div class="mt-10">
+								<li >User Name: <span>{{profile}}</span></li>								
+							</div>
+							<div class="mt-10">
+								<li >First Name: <span>{{profile.user.first_name}}</span></li>
+							</div>
+							<div class="mt-10">
+								<li >Last Name: <span>{{profile.user.last_name}}</span></li>
+							</div>
+							<div class="mt-10">
+								<li >City: <span>{{profile.city}}</span></li>
+							</div>
+							<div class="mt-10">
+								<li >Address: <span>{{profile.address}}</span></li>
+							</div>
+							<div class="mt-10">
+								<li >ZIP: <span>{{profile.zip}}</span></li>
+							</div>
+							<div class="mt-10">
+							<li >Mobile: <span>{{profile.mobile}}</span></li>											
+							</div>
+							<div class="mt-10">
+							<li >Birthday: <span>{{profile.birthday}}</span></li>
+							</div>
+
+							
+				{% else %}
+				<h4 clas="alert alert-danger"> You must be <a href="{% url 'login' %}" class="tex-dark"> logged in </a></h4>
+				{% endif %}
+			</form>
+						<a href="{% url 'profile_edite' %}" class="genric-btn info mt-5">Profile Edite</a>
+					</div>
+						
+						
+		</div>
+	</div>
+
+{% endblock content %}
